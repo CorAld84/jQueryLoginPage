@@ -8,7 +8,6 @@ class Login {
     validateonSubmit() {
         let self = this;
 
-        console.log("ciaofields")
 
         this.form.on('submit', (event) => {
 
@@ -89,10 +88,9 @@ class Login {
 
 };
 
-//const form = document.querySelector(".loginForm");
+
 const form = $(".loginForm").find();
 
-console.log(form);
 
 
 
