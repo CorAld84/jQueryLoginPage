@@ -1,44 +1,59 @@
 class Login {
+
+
     constructor(form, fields) {
         this.form = form;
         this.fields = fields;
         this.validateonSubmit();
+
+        
     };
 
+
+// check the problem of repetition submit
     validateonSubmit() {
+
         let self = this;
 
 
         this.form.on('submit', (event) => {
             alert(event.isDefaultPrevented());
+        self.form.on("submit", (event) => {
+
             event.preventDefault();
             alert(event.isDefaultPrevented());
             var error = 0;
 
-            console.log(self.fields)
-
             self.fields.forEach(field => {
 
                 const input = $(`#${field}`).attr('id');
+
 
                 if (self.validateFields(input) == false) {
                     error++;
                 }
             });
 
+            console.log(error);
+
             if (error == 0) {
                 localStorage.setItem("auth", 1);
-                this.form.submit();
+                console.log(self.form[0]['action']);
+                self.form.submit();
+                // check the submit problem after the course
+                
             }
+
+
         });
     };
 
     validateFields(field) {
 
+
         if ($(`#${field}`).val().trim() === "") {
             this.setStatus(
                 $(`#${field}`).attr('id'),
-
                 `${$(`#${field}`).attr('id')} cannot be blank`,
                 "error"
             );
@@ -53,20 +68,22 @@ class Login {
                         `${$(`#${field}`).attr('id')} must be at least 8 characters`,
                         "error"
                     );
+                    console.log("aldo 1");
 
                     return false;
 
                 } else {
                     this.setStatus($(`#${field}`).attr('id'), null, "success");
-
+                    console.log("aldo 2");
                     return true;
                 };
             } else {
                 this.setStatus($(`#${field}`).attr('id'), null, "success");
-
+                console.log("aldo 3");
                 return true;
             };
         };
+
     };
 
     setStatus(field, message, sta) {
@@ -90,16 +107,21 @@ class Login {
 };
 
 
-const form = $(".loginForm").find();
+const form = $("form");
+
+
 
 
 
 
 if (form) {
 
+    console.log(form);
     const fields = ["username", "password"];
 
     const validator = new Login(form, fields);
+    console.log("@@@@@@")
+    console.log(validator)
 }
 
 
