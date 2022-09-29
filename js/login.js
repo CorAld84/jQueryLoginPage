@@ -1,47 +1,36 @@
 class Login {
 
-
     constructor(form, fields) {
         this.form = form;
         this.fields = fields;
         this.validateonSubmit();
 
-        
+
     };
 
 
-// check the problem of repetition submit
+    // check the problem of repetition submit
     validateonSubmit() {
-
         let self = this;
 
 
-        this.form.on('submit', (event) => {
-            alert(event.isDefaultPrevented());
-        self.form.on("submit", (event) => {
-
+        $('.button').on('click', (event) => {
             event.preventDefault();
-            alert(event.isDefaultPrevented());
             var error = 0;
-
             self.fields.forEach(field => {
 
                 const input = $(`#${field}`).attr('id');
-
 
                 if (self.validateFields(input) == false) {
                     error++;
                 }
             });
 
-            console.log(error);
 
             if (error == 0) {
                 localStorage.setItem("auth", 1);
-                console.log(self.form[0]['action']);
                 self.form.submit();
-                // check the submit problem after the course
-                
+
             }
 
 
@@ -68,18 +57,15 @@ class Login {
                         `${$(`#${field}`).attr('id')} must be at least 8 characters`,
                         "error"
                     );
-                    console.log("aldo 1");
 
                     return false;
 
                 } else {
                     this.setStatus($(`#${field}`).attr('id'), null, "success");
-                    console.log("aldo 2");
                     return true;
                 };
             } else {
                 this.setStatus($(`#${field}`).attr('id'), null, "success");
-                console.log("aldo 3");
                 return true;
             };
         };
