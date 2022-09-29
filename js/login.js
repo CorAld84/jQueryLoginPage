@@ -10,9 +10,9 @@ class Login {
 
 
         this.form.on('submit', (event) => {
-            alert( event.isDefaultPrevented() );
+            alert(event.isDefaultPrevented());
             event.preventDefault();
-            alert( event.isDefaultPrevented() );
+            alert(event.isDefaultPrevented());
             var error = 0;
 
             console.log(self.fields)
@@ -38,7 +38,7 @@ class Login {
         if ($(`#${field}`).val().trim() === "") {
             this.setStatus(
                 $(`#${field}`).attr('id'),
-                
+
                 `${$(`#${field}`).attr('id')} cannot be blank`,
                 "error"
             );
@@ -70,9 +70,9 @@ class Login {
     };
 
     setStatus(field, message, sta) {
-        
+
         const errorMessage = $(`#${field}`).siblings(".error-message");
-    
+
 
         if (sta == "success") {
             if (errorMessage) {
