@@ -15,9 +15,13 @@ class Login {
 
         let self = this;
 
+
+        this.form.on('submit', (event) => {
+            alert(event.isDefaultPrevented());
         self.form.on("submit", (event) => {
 
             event.preventDefault();
+            alert(event.isDefaultPrevented());
             var error = 0;
 
             self.fields.forEach(field => {
