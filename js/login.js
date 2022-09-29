@@ -10,8 +10,9 @@ class Login {
 
 
         this.form.on('submit', (event) => {
-
+            alert( event.isDefaultPrevented() );
             event.preventDefault();
+            alert( event.isDefaultPrevented() );
             var error = 0;
 
             console.log(self.fields)
