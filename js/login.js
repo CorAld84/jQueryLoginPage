@@ -6,30 +6,24 @@ class Login {
         this.fields = fields;
         this.validateonSubmit();
 
-        
+
     };
 
-
-// check the problem of repetition submit
+    // check the problem of repetition submit
     validateonSubmit() {
 
         let self = this;
 
 
-        this.form.on('submit', (event) => {
-            alert(event.isDefaultPrevented());
-        self.form.on("submit", (event) => {
-
+        self.form.on('submit', (event) => {
             event.preventDefault();
-            alert(event.isDefaultPrevented());
             var error = 0;
 
-            self.fields.forEach(field => {
+            console.log(self.fields);
 
-                const input = $(`#${field}`).attr('id');
+            self.fields.forEach (field => {
 
-
-                if (self.validateFields(input) == false) {
+                if (self.validateFields(field) == false) {
                     error++;
                 }
             });
@@ -41,12 +35,12 @@ class Login {
                 console.log(self.form[0]['action']);
                 self.form.submit();
                 // check the submit problem after the course
-                
+
             }
 
-
         });
-    };
+
+    }
 
     validateFields(field) {
 
@@ -108,11 +102,6 @@ class Login {
 
 
 const form = $("form");
-
-
-
-
-
 
 if (form) {
 
